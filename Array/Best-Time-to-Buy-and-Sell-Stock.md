@@ -32,9 +32,12 @@ Best Sale price will always be the max number from end.
 ---
 
 ## Approach
-	1. Find the best day possible in future
-		a. Traverse from right to left and find the max till that and fill a new vector with the max possible rate after that date
-		b. In another pass traverse both the vec and subtract the actual price and max price and keep the max possible.
+1. Find the best day possible in future
+	a. Traverse from right to left and find the max till that and fill a new vector with the max possible rate after that date
+	b. In another pass traverse both the vec and subtract the actual price and max price and keep the max possible.
+**Approach 2:**(Only constant extra Space)
+1. Rather than keeping a separate vector, keep a variable which keeps the current max sale price.
+2. Iterate from right to left and maintain max profit and max sale price.
 ---
 
 ## Algorithm
@@ -59,8 +62,20 @@ class Solution {
 public:
     int maxProfit(vector<int>& prices) {
         
-        return bestSaleDay(prices);
+        return bestSaleDayOneSpace(prices);
     }
+
+    int bestSaleDayOneSpace(vector<int>& prices){
+        int maxP = 0;
+        int curMaxSell = 0;
+        int days = prices.size();
+        for(int i= days-1; i>=0; --i){
+            maxP  = max(maxP, curMaxSell - prices[i]);
+            curMaxSell = max(curMaxSell, prices[i]);
+        }
+        return maxP;
+    }
+
     int bestSaleDay(vector<int>& prices){
         int maxP = 0;
         int days = prices.size();
@@ -71,11 +86,13 @@ public:
             curMax = max(curMax, prices[i]);
             maxPossPrice[i] = curMax;
         }
+
         for(size_t i=0; i<days; ++i){
             maxP = max(maxP, maxPossPrice[i]-prices[i]);
         }
-        retun maxP;
+        return maxP;
     }
+
     int bruteForce(vector<int>& prices){
         int maxP = 0;
         for(size_t i=0; i<prices.size(); ++i){

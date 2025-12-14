@@ -35,9 +35,9 @@ Best Sale price will always be the max number from end.
 1. Find the best day possible in future
 	a. Traverse from right to left and find the max till that and fill a new vector with the max possible rate after that date
 	b. In another pass traverse both the vec and subtract the actual price and max price and keep the max possible.
-**Approach 2:**(Only constant extra Space)
-1. Rather than keeping a separate vector, keep a variable which keeps the current max sale price.
-2. Iterate from right to left and maintain max profit and max sale price.
+## Approach 2: (Only constant extra Space)  
+1. Rather than keeping a separate vector, keep a variable which keeps the current max sale price.  
+2. Iterate from right to left and maintain max profit and max sale price.  
 ---
 
 ## Algorithm

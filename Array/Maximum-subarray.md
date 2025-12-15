@@ -54,7 +54,13 @@ Keep 2 variables `curSum` and `maxSum`.
 
 ## Approach 2: (Divide and conquer)
 **Getting Difficulty understanding it.**
-- Find sum of left side, right side, and all the current numbers and return maximum.
+Find max of left side, max of right side, and the max sum of current subarray with ith num in middle and return maximum amongst these.
+1. Exit condition: if left > right, return INT_MIN
+2. Consider 3 elements
+   a. Find Max of left.
+   b. Find Max of right.
+   c. Find current max possible by calculating the max contigous sum possible on left, max contigous sum possible on right, and adding mid element to it.
+   d. Return max of above 3.
 ---
 
 ## Algorithm
@@ -68,10 +74,11 @@ Keep 2 variables `curSum` and `maxSum`.
 class Solution {
 public:
     int maxSubArray(vector<int>& nums) {
-        return kadane(nums);
+        //return resetWhenNeg(nums);
+        return DC(nums, 0, nums.size()-1);
     }
 
-    int kadane(vector<int>& nums) {
+    int resetWhenNeg(vector<int>& nums) {
         int maxSum = nums[0];
         int curSum = 0;
         for(int i=0; i<nums.size();++i){
@@ -80,5 +87,30 @@ public:
             curSum = max(curSum, 0); 
         }
         return maxSum;
+    }
+
+    int DC(vector<int>& nums, int l, int r) {
+        if(l>r)
+            return INT_MIN;
+
+        int m = (l+r)/2;
+        int ml = DC(nums, l, m-1);
+        int mr = DC(nums, m+1, r);
+        int sum = 0;
+        int sumL=0, sumR=0;
+
+        //find the max possible sum of contigous elements on left
+        for(int i=m-1; i>=l; --i){
+            sum+= nums[i];
+            sumL = max(sumL, sum);
+        }
+        sum = 0;
+        //find the max possible sum of contigous elements on right
+        for(int i=m+1; i<=r; ++i){
+            sum+= nums[i];
+            sumR = max(sumR, sum);
+        }
+
+        return max(max(ml,mr), sumL+sumR+nums[m]);
     }
 };

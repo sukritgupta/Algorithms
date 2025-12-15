@@ -53,3 +53,47 @@ Follow up: A linked list can be reversed either iteratively or recursively. Coul
 
 ## C++ Solution
 ```cpp
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        return rec(head);
+        //return itr(head);
+    }
+
+    ListNode* rec(ListNode *head){
+        if(!head || !head->next){
+            return head;
+        }
+        ListNode* newHead = rec1(head->next); 
+        head->next->next = head;
+        head->next= nullptr;
+        return newHead;    
+    }
+
+    //simpler approach could be prevNode = nullptr and currNode = head
+    ListNode* itr(ListNode *head){
+        if(!head){
+            return head;
+        }
+
+        ListNode* prevNode = head, *curNode = head->next, *nextNode ;
+        prevNode->next = nullptr;
+        while(curNode != nullptr){
+            nextNode = curNode->next;
+            curNode->next = prevNode;
+            prevNode = curNode;
+            curNode = nextNode;
+        }
+        return prevNode; 
+    }
+};

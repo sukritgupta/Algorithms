@@ -15,10 +15,13 @@
 ---
 
 ## Approach
-## Approach 2: (Only constant extra Space)  
+## Approach 2: ()  
 ---
 
-## Algorithm
+## Key Insights
+---
+
+## Mistakes
 ---
 
 ## Edge Cases

@@ -82,12 +82,7 @@ public:
 
     //simpler approach could be prevNode = nullptr and currNode = head
     ListNode* itr(ListNode *head){
-        if(!head){
-            return head;
-        }
-
-        ListNode* prevNode = head, *curNode = head->next, *nextNode ;
-        prevNode->next = nullptr;
+        ListNode* prevNode = nullptr, *curNode = head, *nextNode = nullptr;
         while(curNode != nullptr){
             nextNode = curNode->next;
             curNode->next = prevNode;

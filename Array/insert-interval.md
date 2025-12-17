@@ -55,9 +55,44 @@ newInterval.length == 2
 ---
 
 ## Edge Cases
-- Remember that now we need to n+1 elements in list.
-- Bewware about using correct indexes.
+- Remember that now we need insert n+1 elements in list.
+- Beware about using correct indexes.
 ---
 
 ## C++ Solution
 ```cpp
+class Solution {
+public:
+    vector<vector<int>> insert(vector<vector<int>>& intervals,
+                               vector<int>& newInterval) {
+        bool newIntervalAdded = 0;
+        vector<vector<int>> mergedIntervals;
+        for (int i = 0; i < intervals.size();) {
+            vector<int> interval = intervals[i];
+            vector<int> intervalToPush;
+            if (!newIntervalAdded && newInterval[0] < interval[0]) {
+                intervalToPush = newInterval;
+                newIntervalAdded = 1;
+            } else {
+                intervalToPush = interval;
+                ++i;
+            }
+            mergeInterval(mergedIntervals, intervalToPush);
+        }
+        if (!newIntervalAdded) {
+            mergeInterval(mergedIntervals, newInterval);
+        }
+        return mergedIntervals;
+    }
+
+    void mergeInterval(vector<vector<int>>& mergedIntervals,
+                       const vector<int>& intervalToPush) {
+        if (mergedIntervals.empty() ||
+            mergedIntervals.back()[1] < intervalToPush[0]) {
+            mergedIntervals.push_back(intervalToPush);
+        } else {
+            mergedIntervals.back()[1] =
+                max(mergedIntervals.back()[1], intervalToPush[1]);
+        }
+    }
+};

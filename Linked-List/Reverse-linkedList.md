@@ -42,7 +42,8 @@ Follow up: A linked list can be reversed either iteratively or recursively. Coul
 ---
 
 ## Approach
-- Make the previous node, next of current node.
+- "Make the previous node, next of current node.
+- For recursive, iterate till end and get new node, head->next->next=head;"
 ---
 
 ## Algorithm

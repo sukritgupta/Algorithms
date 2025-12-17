@@ -65,9 +65,12 @@ public:
         int left=0, right=0, maxFreq=0, maxCount=0;
         //keeps count of characters in current window
         unordered_map<char,int> counter;
+
         while(right<s.size()){
             counter[s[right]]++;
-            maxFreq = max(maxFreq, counter[s[right]]);
+            //maxFreq keeps the max count of any repeating character at any time we had in any window,
+            //regardless of what is window now
+            maxFreq = max(maxFreq, counter[s[right]]);   
             if(right-left+1 - maxFreq <= k){
                 maxCount = max(maxCount, right-left+1);
             }else{

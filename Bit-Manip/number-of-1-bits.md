@@ -58,8 +58,8 @@ Follow up: If this function is called many times, how would you optimize it?"
 ---
 
 ## Approach
-"Brain Kernighen=> n=n&(n-1) drops the last 1, count while dropping (O(no of 1s in num))
-Apr2 : Check last bit n&1 cnt ++, n >>=1 (shift right) O(32) constant"
+1. "Brain Kernighen=> n=n&(n-1) drops the last 1, count while dropping (O(no of 1s in num))
+2. Apr2 : Check last bit n&1 cnt ++, n >>=1 (shift right) O(32) constant"
 
 ---
 

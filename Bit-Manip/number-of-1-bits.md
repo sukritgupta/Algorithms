@@ -74,3 +74,29 @@ Apr2 : Check last bit n&1 cnt ++, n >>=1 (shift right) O(32) constant"
 
 ## C++ Solution
 ```cpp
+class Solution {
+public:
+    int hammingWeight(int n) {
+        
+        return BrainKerhighen(n);
+        //return hammingWeightN(n);
+    }
+
+    int BrainKerhighen(int n) {
+        int cnt = 0;
+        while(n){
+            n = n&(n-1);
+            ++cnt;
+        }
+        return cnt;
+    }
+
+        int hammingWeightN(int n) {
+        int cnt = 0;
+        while(n){
+             if(n&1) ++cnt;
+             n >>= 1;
+        }
+        return cnt;
+    }
+};

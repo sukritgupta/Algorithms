@@ -11,25 +11,17 @@
 
  
 
-Example 1:
+Example 1:  
+Input: nums = [1,1,1,2,2,3], k = 2  
+Output: [1,2]  
 
-Input: nums = [1,1,1,2,2,3], k = 2
+Example 2:   
+Input: nums = [1], k = 1  
+Output: [1]  
 
-Output: [1,2]
-
-Example 2:
-
-Input: nums = [1], k = 1
-
-Output: [1]
-
-Example 3:
-
-Input: nums = [1,2,1,2,1,2,3,1,3,2], k = 2
-
-Output: [1,2]
-
- 
+Example 3:  
+Input: nums = [1,2,1,2,1,2,3,1,3,2], k = 2  
+Output: [1,2]  
 
 Constraints:
 
@@ -37,9 +29,9 @@ Constraints:
 -104 <= nums[i] <= 104
 k is in the range [1, the number of unique elements in the array].
 It is guaranteed that the answer is unique.
- 
 
 Follow up: Your algorithm's time complexity must be better than O(n log n), where n is the array's size."
+
 ---
 
 ## Intuition
@@ -47,10 +39,11 @@ Follow up: Your algorithm's time complexity must be better than O(n log n), wher
 
 ---
 
-## Approach
-"Buckets(O(n)): Count Frequency in Map -> Take n+1 vec of vec. With Frequency as key push the nums in arrays. There can be multiple nums with same freq.
-MinHeap O(nlogk): Count Freq in Map -> Put max k elemets in heap and pop if more than k. min heap will finally contain k top elements   
-MaxHeap O(nlogn). Count freq in map. Put all in MaxHeap, take top k elems"
+## Approach  
+**Buckets(O(n)):** Count Frequency in Map -> Take n+1 vec of vec. With Frequency as key push the nums in arrays. There can be multiple nums with same freq.  
+**MinHeap O(nlogk):** Count Freq in Map -> Put max k elemets in heap and pop if more than k. min heap will finally contain k top elements     
+**MaxHeap O(nlogn):** Count freq in map. Put all in MaxHeap, take top k elems  
+
 ---
 
 ## Key Insights

@@ -1,6 +1,6 @@
 # Contains Duplicate
 
-**LeetCode:** (217) https://leetcode.com/problems/best-time-to-buy-and-sell-stock  
+**LeetCode:** (217) https://leetcode.com/problems/contains-duplicate  
 **Difficulty:** Easy  
 **Pattern:** Array  
 

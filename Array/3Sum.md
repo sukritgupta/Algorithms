@@ -15,7 +15,7 @@
 ---
 
 ## Approach
-Fix `i` + 2 pointer
+Sort, Fix `i` + 2 pointer
 - Move `i` for all locations. For each `i`, move `j` and `k`.
 - If sum is 0, push and j++ else move two pointer(j,k) as per sum.
 - For no Duplicates, skip i and j, if they are equal to prev num, after checking them once.    

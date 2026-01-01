@@ -42,10 +42,6 @@ Best Sale price will always be the max number from end.
 ---
 
 ## Algorithm
-1. For each element:
-   - If `(target - current)` exists in the map, return both indices.
-   - Otherwise, store the current element with its index.
-
 ---
 
 ## Complexity
